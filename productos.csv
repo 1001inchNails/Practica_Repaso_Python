@@ -1,5 +1,5 @@
-Nombre; Precio; Cantidad
-producto01; 10; 100
-producto02; 20; 200
-producto03; 30; 300
-producto04; 40; 400
+Nombre, Precio, Cantidad
+producto01, 10, 100
+producto02, 20, 200
+producto03, 30, 300
+producto04, 40, 400

@@ -6,14 +6,7 @@ o Lee un archivo CSV que contenga datos de productos (nombre, precio, cantidad) 
 '''
 
 import csv
-from io import StringIO
-
-class Producto (object):
-    
-    def __init__(self, nombre, precio, cantidad):
-        self.nombre = nombre
-        self.precio = precio
-        self.cantidad = cantidad
+from parte2_1 import Producto
 
 empleados = ["Ana", "Carlos", "Maria", "Luis"]
 
@@ -31,16 +24,24 @@ print (file.read())
 
 
 csvFile = open ("productos.csv")
-reader = csv.DictReader (csvFile)
-
-columnNames = reader.fieldnames
 
 reader = csv.reader (csvFile)
+
 tamanhoCSV = sum(1 for row in reader)
 
-for i in range (1, tamanhoCSV):
-    nombreClase = "producto" + i
+listaProductos = []
 
-csvr = csv.reader(csvFile)
-csvr = list(csvr)
-print (csvr)  
+with open("productos.csv", 'r') as file:
+        reader = csv.reader(file)
+        rows = list(reader)
+        for i in range (1, tamanhoCSV): # empezando con 1 nos saltamos el header ([0])
+            nombre = rows[i][0]
+            precio = float(rows[i][1])
+            cantidad = int(rows[i][2])
+            listaProductos.append(Producto(nombre,precio,cantidad))
+
+for item in listaProductos:
+     print(item)
+
+listaProductos[0].aumentarCantidad(320)
+print("\nCantidad producto01: ",listaProductos[0].mostrarCantidad())

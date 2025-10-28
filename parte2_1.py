@@ -20,6 +20,9 @@ class Producto (object):
         total = self.precio * self.cantidad
         return total
     
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Precio: ${self.precio}, Cantidad: {self.cantidad}"
+    
     def aumentarCantidad (self, cantidad):
         self.cantidad = self.cantidad + cantidad
         
@@ -28,14 +31,16 @@ class Producto (object):
     
     def mostrarCantidad (self):
         return self.cantidad
+
         
-producto1 = Producto ("producto 01", 100, 1000)
-print(producto1.calcular_total())
+if __name__ == "__main__": # para que no se ejecute al importar Producto al archivo 2_2, ya que por algun motivo ejecuta todo el archivo aunque solo se importe Producto -_-
+    producto1 = Producto ("producto 01", 100, 1000)
+    print(producto1.calcular_total())
 
-producto2 = Producto ("producto 02", 100, 1000)
-producto2.aumentarCantidad(200)
-print(producto2.mostrarCantidad())
+    producto2 = Producto ("producto 02", 100, 1000)
+    producto2.aumentarCantidad(200)
+    print(producto2.mostrarCantidad())
 
-producto3 = Producto ("producto 03", 100, 1000)
-producto3.disminuirCantidad(200)
-print(producto3.mostrarCantidad())
+    producto3 = Producto ("producto 03", 100, 1000)
+    producto3.disminuirCantidad(200)
+    print(producto3.mostrarCantidad())
